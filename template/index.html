@@ -1,0 +1,43 @@
+<html>
+<head>
+    <title>groupie-tracker</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>  
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <div id="logo">
+            </div>
+            <div id ="title">
+                <h1>Groupie Tracker</h1>
+            </div>
+        </div>
+
+        <div id="navBar">
+            <table>
+                <tr>
+                <td><a href="home.html">Home</a></td>
+                <td><a href="index.html">index</a></td>
+                <td><a href="aboutus.html">About Us</a></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="content">
+            {{ range .All}}
+                <div id ="box" style="background-image: url('{{ .Image}}'); background-repeat: no-repeat; background-size: cover; ">
+                    <a href="/submit?value={{ .ID }}">
+                    <div id="name">
+                        <pre>{{ .Name}}</pre>
+                    </div>
+                    </a>
+                </div>
+            {{end}}
+        </div> 
+        <div id="footer">Created By:&nbsp;Ruqaya Helal,  &nbsp;&nbsp;Maryam Abbas</div>
+    </div>
+</body>
+<html>
+
+
+

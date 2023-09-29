@@ -1,0 +1,56 @@
+body{margin:0;padding:0;border:none; background-color: #190019; font-family:"Courier New", Courier, 
+    monospace; text-align:center; height: 100%;width: 100%; overflow: auto;}
+
+#container{width: 100%;float: left;max-width: 100%; clear: both;height: 100%; overflow: auto;}
+
+#header{width: 100%;height: 12%;float: left;background-color: #522b5b; 
+    border-bottom:10px solid #dfb6b2;   position: sticky; top: 0
+}
+
+#logo{float: left; width: 10%; height: 99%; color: aliceblue; padding-top: 1%;
+     background-image: url("https://img1.picmix.com/output/stamp/normal/9/8/5/5/1685589_c27dd.gif");
+     background-repeat: no-repeat;
+     background-size: cover;
+}
+
+#title{float: left; width: 50%; height: 100%; font-size: 28px; 
+    padding-top: 1%; text-align: left; color:#190019;}
+
+#navBar{float: left; clear: both; font-family: Monospace ;
+     text-decoration:none; height: 8%; width: 100%;}
+
+#navBar table{text-align:center; width:30% ;font-size:24px ;text-align:center;font-weight:bold; float: right;}
+
+#navBar td {padding:1.45%; width:33.333%;}
+#navBar td:hover { background-color:#fbe4d8; text-decoration:underline; color:#522b5b}
+#navBar a {color:#dfb6b2 ;text-decoration:none;}
+#navBar a:visited {color:#dfb6b2}
+
+#content{width: 100%; font: left; clear: left; display:flex; flex-wrap: wrap; 
+    justify-content: flex-start;
+    justify-content: center; margin-bottom: 2; height: auto; color: #dfb6b2;}
+
+#box:hover{transform: scale(1.2); border: 1px solid #dfb6b2;border-radius: 10px;}
+
+#box{width: 250px; height: 250px; margin: 1%; font-size: 24px;font-family: Candara; 
+    border: 1px solid #dfb6b2;border-radius: 10px;}
+
+#name{background-color: #522b5b; float: left; max-width: 100%;color:white; 
+    font-weight: bold; opacity: 0;height: 100%; display: flex; justify-content: center;
+    align-items: center; width: 100%; overflow-wrap: break-word;
+    border: 1px solid #522b5b; border-radius: 10px; } 
+
+#name:hover{opacity: 0.8;filter: blur(0.5px);} 
+
+#footer{height: 7%;width: 100%;float: left; color:#522b5b; clear: both; padding-top: 2% ;}
+
+#ErrorMsG{color:#522b5b; font-size: 28px; padding-top: 20%; text-align: center;
+    justify-content: center; }
+
+#ArticeImage{width: 250px; height: 250px; margin: 1%; font-size: 24px;font-family: Candara; 
+    border: 1px solid #dfb6b2;border-radius: 10px; align-items: center; float: left; clear: both;}
+
+#info{float: left; clear: both; text-align: left; font-size: 20px; line-height: 1.5; }
+#info li{list-style-type: none;}
+#label{color:#522b5b}
+#members{list-style-type: circle; }
