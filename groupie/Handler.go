@@ -9,67 +9,69 @@ import (
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path == "/style.css" {
-		ServeFile(w, r, "style.css")
+	artists, _, _, flag := UnmarshalData()
+	if !flag {
+		w.WriteHeader(http.StatusInternalServerError)
+		http.ServeFile(w, r, "./template/500.html")
 		return
+
+	} else if r.URL.Path == "/style.css" {
+		http.ServeFile(w, r, "./template/style.css")
+		return
+
 	} else if r.URL.Path == "/index.html" {
 		indexTemplate, _ := template.ParseFiles("./template/index.html")
-		artists, _, _ := UnmarshalData()
 
 		pageData := PageData{
 			All: artists,
 		}
 
 		err := indexTemplate.Execute(w, pageData)
-
 		if err != nil {
 			fmt.Print(err)
-			ServeFile(w, r, "500.html")
+			w.WriteHeader(http.StatusInternalServerError)
+			http.ServeFile(w, r, "./template/500.html")
 		}
 
 		return
 
 	} else if r.URL.Path == "/home.html" || r.URL.Path == "/" {
-		ServeFile(w, r, "home.html")
+		http.ServeFile(w, r, "./template/home.html")
 		return
+
 	} else if r.URL.Path == "/aboutus.html" {
-		ServeFile(w, r, "aboutus.html")
+		http.ServeFile(w, r, "./template/aboutus.html")
 		return
+
 	} else if r.URL.Path == "/submit" {
 		valueStr := r.URL.Query().Get("value")
 		value, _ := strconv.Atoi(valueStr)
 		indexTemplate, _ := template.ParseFiles("./template/artice.html")
-		artists, _, _ := UnmarshalData()
 
 		if valueStr == "" || value > 52 {
-			ServeFile(w, r, "400.html")
+			w.WriteHeader(http.StatusBadRequest)
+			http.ServeFile(w, r, "./template/400.html")
 			return
 		}
 
 		pageDataArtice := PageDataArtice{
 			All:                    artists[value-1],
 			MergeDatesAndLocations: MergeDatesAndLocations(value - 1),
-			// AllLocation:  TheLocations.Index[value-1].TheData,
-			// AllDates:     TheDates.Index2[value-1].TheData,
-			// Allrelations: TheRelations.Index3[value-1].TheData,
 		}
 
 		err := indexTemplate.Execute(w, pageDataArtice)
-
 		if err != nil {
 			fmt.Print(err)
-			ServeFile(w, r, "500.html")
+			w.WriteHeader(http.StatusInternalServerError)
+			http.ServeFile(w, r, "./template/500.html")
 		}
 
 		return
 	} else {
+
 		w.WriteHeader(http.StatusNotFound)
-		ServeFile(w, r, "404.html")
+		http.ServeFile(w, r, "./template/404.html")
 		return
 	}
 
-}
-
-func ServeFile(w http.ResponseWriter, r *http.Request, page string) {
-	http.ServeFile(w, r, "./template/"+page)
 }

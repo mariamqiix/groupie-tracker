@@ -54,3 +54,7 @@ body{margin:0;padding:0;border:none; background-color: #190019; font-family:"Cou
 #info li{list-style-type: none;}
 #label{color:#522b5b}
 #members{list-style-type: circle; }
+
+
+#aboutus{ padding: 5%; width: 90%; font: left; clear: left; font-size: 28px; 
+   margin-bottom: 2; height: auto; color: #dfb6b2;}

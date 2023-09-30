@@ -25,13 +25,15 @@ func readThefile(url string) []byte {
 	// Parse JSON
 }
 
-func UnmarshalData() ([]Artist, ResponseData, ResponseData2) {
+func UnmarshalData() ([]Artist, ResponseData, ResponseData2, bool) {
+	flag := true
 	//for artist
 	url := "https://groupietrackers.herokuapp.com/api/artists"
 	body := readThefile(url)
 	var artists []Artist
 	err := json.Unmarshal(body, &artists)
 	if err != nil {
+		flag = false
 		log.Fatal(err)
 	}
 
@@ -41,21 +43,25 @@ func UnmarshalData() ([]Artist, ResponseData, ResponseData2) {
 	var TheLocations ResponseData
 	err = json.Unmarshal(data, &TheLocations)
 	if err != nil {
+		flag = false
 		log.Fatal(err)
 	}
+
 	for z := 0; z < len(TheLocations.Index); z++ {
 		for i := 0; i < len(TheLocations.Index[z].TheData); i++ {
 			TheLocations.Index[z].TheData[i] = strings.ReplaceAll(TheLocations.Index[z].TheData[i], "_", " ")
 		}
 	}
+
 	// for the dates
 	url = "https://groupietrackers.herokuapp.com/api/dates"
 	Datees := readThefile(url)
 	var TheDates ResponseData2
 	err = json.Unmarshal(Datees, &TheDates)
 	if err != nil {
+		flag = false
 		log.Fatal(err)
 	}
 
-	return artists, TheLocations, TheDates
+	return artists, TheLocations, TheDates, flag
 }
