@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strings"
 )
 
 func readThefile(url string) []byte {
@@ -24,7 +25,7 @@ func readThefile(url string) []byte {
 	// Parse JSON
 }
 
-func UnmarshalData() ([]Artist, ResponseData, ResponseData2, ResponseData3) {
+func UnmarshalData() ([]Artist, ResponseData, ResponseData2) {
 	//for artist
 	url := "https://groupietrackers.herokuapp.com/api/artists"
 	body := readThefile(url)
@@ -42,7 +43,11 @@ func UnmarshalData() ([]Artist, ResponseData, ResponseData2, ResponseData3) {
 	if err != nil {
 		log.Fatal(err)
 	}
-
+	for z := 0; z < len(TheLocations.Index); z++ {
+		for i := 0; i < len(TheLocations.Index[z].TheData); i++ {
+			TheLocations.Index[z].TheData[i] = strings.ReplaceAll(TheLocations.Index[z].TheData[i], "_", " ")
+		}
+	}
 	// for the dates
 	url = "https://groupietrackers.herokuapp.com/api/dates"
 	Datees := readThefile(url)
@@ -52,13 +57,5 @@ func UnmarshalData() ([]Artist, ResponseData, ResponseData2, ResponseData3) {
 		log.Fatal(err)
 	}
 
-	// for the relations
-	url = "https://groupietrackers.herokuapp.com/api/relation"
-	relations := readThefile(url)
-	var TheRelations ResponseData3
-	err = json.Unmarshal(relations, &TheRelations)
-	if err != nil {
-		log.Fatal(err)
-	}
-	return artists, TheLocations, TheDates, TheRelations
+	return artists, TheLocations, TheDates
 }

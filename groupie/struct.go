@@ -1,14 +1,12 @@
 package groupie
 
 type PageDataArtice struct {
-	All          Artist
-	allLocation  ResponseData
-	allDates     ResponseData2
-	allrelations ResponseData3
+	All                    Artist
+	MergeDatesAndLocations ResponseData3
 }
 
 type PageData struct {
-	All          []Artist
+	All []Artist
 }
 
 type Artist struct {
@@ -39,10 +37,10 @@ type Index2 struct {
 }
 
 type ResponseData3 struct {
-	Index3 []Index3 `json:"index"`
+	Index3 []Index3
 }
 
 type Index3 struct {
-	ID      int         `json:"id"`
-	TheData interface{} `json:"datesLocations"`
+	Location string
+	TheData  string
 }

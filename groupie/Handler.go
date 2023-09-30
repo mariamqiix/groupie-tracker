@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"net/http"
 	"strconv"
+	// "strings"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
@@ -13,7 +14,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	} else if r.URL.Path == "/index.html" {
 		indexTemplate, _ := template.ParseFiles("./template/index.html")
-		artists, _, _, _ := UnmarshalData()
+		artists, _, _ := UnmarshalData()
 
 		pageData := PageData{
 			All: artists,
@@ -38,7 +39,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		valueStr := r.URL.Query().Get("value")
 		value, _ := strconv.Atoi(valueStr)
 		indexTemplate, _ := template.ParseFiles("./template/artice.html")
-		artists, TheLocations, TheDates, TheRelations := UnmarshalData()
+		artists, _, _ := UnmarshalData()
 
 		if valueStr == "" || value > 52 {
 			ServeFile(w, r, "400.html")
@@ -46,10 +47,11 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		pageDataArtice := PageDataArtice{
-			All:          artists[value-1],
-			allLocation:  TheLocations,
-			allDates:     TheDates,
-			allrelations: TheRelations,
+			All:                    artists[value-1],
+			MergeDatesAndLocations: MergeDatesAndLocations(value - 1),
+			// AllLocation:  TheLocations.Index[value-1].TheData,
+			// AllDates:     TheDates.Index2[value-1].TheData,
+			// Allrelations: TheRelations.Index3[value-1].TheData,
 		}
 
 		err := indexTemplate.Execute(w, pageDataArtice)
