@@ -20,13 +20,20 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 
 	} else if r.URL.Path == "/index.html" {
-		indexTemplate, _ := template.ParseFiles("./template/index.html")
+		indexTemplate, err := template.ParseFiles("./template/index.html")
+
+		if err != nil {
+			fmt.Print(err)
+			w.WriteHeader(http.StatusInternalServerError)
+			http.ServeFile(w, r, "./template/500.html")
+			return
+		}
 
 		pageData := PageData{
 			All: artists,
 		}
 
-		err := indexTemplate.Execute(w, pageData)
+		err = indexTemplate.Execute(w, pageData)
 		if err != nil {
 			fmt.Print(err)
 			w.WriteHeader(http.StatusInternalServerError)
@@ -45,8 +52,14 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	} else if r.URL.Path == "/submit" {
 		valueStr := r.URL.Query().Get("value")
-		value, _ := strconv.Atoi(valueStr)
-		indexTemplate, _ := template.ParseFiles("./template/artice.html")
+		value, _ := strconv.Atoi(valueStr) //artist
+		indexTemplate, err := template.ParseFiles("./template/artist.html")
+		if err != nil {
+			fmt.Print(err)
+			w.WriteHeader(http.StatusInternalServerError)
+			http.ServeFile(w, r, "./template/500.html")
+			return
+		}
 
 		if valueStr == "" || value > 52 {
 			w.WriteHeader(http.StatusBadRequest)
@@ -59,7 +72,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			MergeDatesAndLocations: MergeDatesAndLocations(value - 1),
 		}
 
-		err := indexTemplate.Execute(w, pageDataArtice)
+		err = indexTemplate.Execute(w, pageDataArtice)
 		if err != nil {
 			fmt.Print(err)
 			w.WriteHeader(http.StatusInternalServerError)

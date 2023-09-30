@@ -52,14 +52,13 @@ body{margin:0;padding:0;border:none; background-color: #20212b; font-family:"Cou
 #ErrorMsG{color:#534145; font-size: 28px; padding-top: 20%; text-align: center;
     justify-content: center; }
 
-#ArticeImage{width: 250px; height: 250px; margin: 1%; font-size: 24px;font-family: Candara; 
+#artistImage{width: 250px; height: 250px; margin: 1%; font-size: 24px;font-family: Candara; 
     border: 1px solid #dfb6b2;border-radius: 10px; align-items: center; float: left; clear: both;}
 
-#info{float: left; clear: both; text-align: left; font-size: 20px; line-height: 1.5; }
-#info li{list-style-type: none;}
+#info{float: left; clear: both; text-align: left; font-size: 20px; line-height: 1.5; width: 50%; }
 #label{color:#9e6752}
 #members{list-style-type: circle; }
-
+#dates{list-style-type: none;}
 
 #aboutus{ padding: 5%; width: 90%; font: left; clear: left; font-size: 28px; 
    margin-bottom: 2; height: auto; color: #dfb6b2;}

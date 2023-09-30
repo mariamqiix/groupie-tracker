@@ -24,8 +24,8 @@
         </div>
 
         <div id="content">
-                <div id="ArticeImage" style="background-image: url('{{ .All.Image}}'); background-repeat: no-repeat; background-size: cover; ">
-
+                <div id="artistImage" style="background-image: url('{{ .All.Image}}'); background-repeat: no-repeat; background-size: cover; ">
+                    <!-- artist -->
                 </div>
                 <div id="info">
                     <ul>
@@ -42,9 +42,12 @@
                         <li><spain id="label"> Dates and locations : </spain></li>
                         <ul>
                             {{ range .MergeDatesAndLocations.Index3 }}
-                              <li id="members"> {{.Location}} </li>
-                              <li id="members"> The Dates : {{.TheData}} </li>
-
+                              <li><spain id="label">Location: </spain> {{.Location}} </li>
+                              <li> <spain id="label">The Dates: </spain>
+                                <ul id="dates">
+                                    <li id="dates">{{ .TheData}}</li>
+                                </ul>
+                                </li>
                             {{end}}
                         </ul>
                         </ul>
