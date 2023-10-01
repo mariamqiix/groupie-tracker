@@ -17,21 +17,22 @@
             <table>
                 <tr>
                 <td><a href="home.html">Home</a></td>
-                <td><a href="index.html">index</a></td>
+                <td><a href="index.html">Artists</a></td>
                 <td><a href="aboutus.html">About Us</a></td>
                 </tr>
             </table>
         </div>
 
         <div id="content">
+            <div id="artistTitle">
+                <spain id="label"><h1>{{ .All.Name}}</h1> </spain> <br>
+            </div>
                 <div id="artistImage" style="background-image: url('{{ .All.Image}}'); background-repeat: no-repeat; background-size: cover; ">
-                    <!-- artist -->
                 </div>
                 <div id="info">
                     <ul>
-                        <li><spain id="label"> Name:</spain> {{ .All.Name}}</li>
                         <li><spain id="label"> First Album:</spain> {{ .All.FirstAlbum}}</li>
-                        <li id="members"><spain id="label"> Members:</spain> 
+                        <li><spain id="label"> Members:</spain> 
                             <ul>
                                 {{ range .All.Members}}
                                 <li id="members">{{.}}</li>
@@ -39,20 +40,26 @@
                             </ul>
                         </li>
                         <li><spain id="label"> Creation Date:</spain> {{ .All.CreationDate}}</li>
-                        <li><spain id="label"> Dates and locations : </spain></li>
+                    </ul>
+
+                </div> 
+                <div id="info2">
+                    <li><spain id="label"> Dates and locations: </spain></li>
                         <ul>
                             {{ range .MergeDatesAndLocations.Index3 }}
-                              <li><spain id="label">Location: </spain> {{.Location}} </li>
-                              <li> <spain id="label">The Dates: </spain>
-                                <ul id="dates">
+                              <li id="members"><spain id="label">Location: </spain> {{.Location}} </li>
+                              <li id="dates"> <spain id="label">The Dates: </spain>
+                                <ul>
                                     <li id="dates">{{ .TheData}}</li>
                                 </ul>
                                 </li>
                             {{end}}
                         </ul>
                         </ul>
-                    </ul>
-                </div>      
+                </div>
+                <div id="returnBack">
+                    <a href="index.html"> ← Back To Artists</a>
+                </div>     
         </div> 
         <div id="footer">Created By:&nbsp;Ruqaya Helal,  &nbsp;&nbsp;Maryam Abbas</div>
     </div>
