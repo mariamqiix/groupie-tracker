@@ -52,7 +52,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	} else if r.URL.Path == "/submit" {
 		valueStr := r.URL.Query().Get("value")
-		value, _ := strconv.Atoi(valueStr) //artist
+		value, errAtoi := strconv.Atoi(valueStr) //artist
 		indexTemplate, err := template.ParseFiles("./template/artist.html")
 		if err != nil {
 			fmt.Print(err)
@@ -61,7 +61,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		if valueStr == "" || value > 52 || value < 1 {
+		if valueStr == "" || value > 52 || value < 1 || errAtoi !=nil {
 			w.WriteHeader(http.StatusBadRequest)
 			http.ServeFile(w, r, "./template/400.html")
 			return
