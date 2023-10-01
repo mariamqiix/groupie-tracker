@@ -6,7 +6,7 @@ import (
 )
 
 func MergeDatesAndLocations(x int) ResponseData3 {
-	_, TheLocations, _, _ := UnmarshalData()
+	_, TheLocations, _, _, _ := UnmarshalData()
 	start := 0
 	No := 0
 	var relation ResponseData3
@@ -27,7 +27,7 @@ func MergeDatesAndLocations(x int) ResponseData3 {
 
 func ReturnTheDates(x, start int) (int, string) {
 
-	_, _, TheDates, _ := UnmarshalData()
+	_, _, TheDates, _, _ := UnmarshalData()
 	Dates := ""
 	for n := start; n < len(TheDates.Index2[x].TheData); n++ {
 		if rune(TheDates.Index2[x].TheData[n][0]) == '*' && n != start {

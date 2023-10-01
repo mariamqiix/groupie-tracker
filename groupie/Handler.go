@@ -9,7 +9,7 @@ import (
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	artists, _, _, flag := UnmarshalData()
+	artists, _, _, _, flag := UnmarshalData()
 	if !flag {
 		w.WriteHeader(http.StatusInternalServerError)
 		http.ServeFile(w, r, "./template/500.html")
@@ -61,7 +61,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		if valueStr == "" || value > 52 {
+		if valueStr == "" || value > 52 || value < 1 {
 			w.WriteHeader(http.StatusBadRequest)
 			http.ServeFile(w, r, "./template/400.html")
 			return

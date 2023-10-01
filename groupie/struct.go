@@ -44,3 +44,12 @@ type Index3 struct {
 	Location string
 	TheData  string
 }
+
+type ResponseData4 struct {
+	Index4 []Index4 `json:"index"`
+}
+
+type Index4 struct {
+	ID      int         `json:"id"`
+	TheData interface{} `json:"datesLocations"`
+}

@@ -25,7 +25,7 @@ func readThefile(url string) []byte {
 	// Parse JSON
 }
 
-func UnmarshalData() ([]Artist, ResponseData, ResponseData2, bool) {
+func UnmarshalData() ([]Artist, ResponseData, ResponseData2, ResponseData4, bool) {
 	flag := true
 	//for artist
 	url := "https://groupietrackers.herokuapp.com/api/artists"
@@ -62,6 +62,14 @@ func UnmarshalData() ([]Artist, ResponseData, ResponseData2, bool) {
 		flag = false
 		log.Fatal(err)
 	}
+	// for the relations
+	url = "https://groupietrackers.herokuapp.com/api/relation"
+	relations := readThefile(url)
+	var TheRelations ResponseData4
+	err = json.Unmarshal(relations, &TheRelations)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	return artists, TheLocations, TheDates, flag
+	return artists, TheLocations, TheDates, TheRelations, flag
 }
