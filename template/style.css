@@ -1,7 +1,7 @@
 body{margin:0;padding:0;border:none; background-color: #20212b;
     font-family:"Courier New", Courier, 
     monospace; text-align:center; height: 100%;
-    width: 100%; overflow: auto;
+    width: 100%; overflow: auto; 
 }
 
 #container{width: 100%;float: left;max-width: 100%; 
@@ -12,24 +12,24 @@ body{margin:0;padding:0;border:none; background-color: #20212b;
     border-bottom:10px solid #9e6752;   position: sticky; top: 0;
     background-image: url("https://media.istockphoto.com/id/497802746/photo/gold-paper-texture-background.jpg?s=2048x2048&w=is&k=20&c=VWkYJBuOVvKkf-Kfe1O0-HEhuSFmezyw7pnD2HEgGX4=");
     background-repeat: no-repeat;
-    background-size: cover; display: flex; max-height: 12%;
+    background-size: cover; display: flex; max-height: 12%; overflow:visible;  white-space: nowrap;
 }
 
-#logo{float: left; width: 10%; height: 98%; color: aliceblue; padding-top: 3%;
+#logo{float: left; width: 10%; height: 97%; color: aliceblue; padding-top: 3%; max-height: 100%; 
      background-image: url("https://img1.picmix.com/output/stamp/normal/9/8/5/5/1685589_c27dd.gif");
      background-repeat: no-repeat;
-     background-size: cover; max-height: 100%; display: flex;
+     background-size: cover; 
+     display: flex;
 }
 
-#title{float: left; width: 50%; height: 90%; font-size: 170%; max-height: 100%;
-    padding-top: 2%; text-align: left; color:#190019;  display: flex;
-    overflow:visible;   white-space: nowrap;
+#title{float: left; width: 40%; height: 98%; font-size: 28px;  max-height: 100%; 
+    padding-top: 2%; text-align: left; color:#190019;  display: flex; 
 }
 
 #navBar{float: left; clear: both; font-family: Monospace ;
      text-decoration:none; height: 8%; width: 100%; overflow:visible; 
       white-space: nowrap;
-    } 
+} 
 
 #navBar table{text-align:center; width:30% ;font-size:18px ;
     text-align:center;font-weight:bold; float: right;  white-space: nowrap; clip:auto 
@@ -116,7 +116,7 @@ body{margin:0;padding:0;border:none; background-color: #20212b;
 
 #aboutus{ padding: 10%; width: 80%; font: left; clear: left; font-size: 24px; 
    margin-bottom: 2; height: auto; color: #534145;
- }
+}
 
 #returnBack{float: left;clear: both; width: 50%; text-align: center; align-items: center;
 
