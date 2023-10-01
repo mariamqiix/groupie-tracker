@@ -12,7 +12,7 @@ body{margin:0;padding:0;border:none; background-color: #20212b;
     border-bottom:10px solid #9e6752;   position: sticky; top: 0;
     background-image: url("https://media.istockphoto.com/id/497802746/photo/gold-paper-texture-background.jpg?s=2048x2048&w=is&k=20&c=VWkYJBuOVvKkf-Kfe1O0-HEhuSFmezyw7pnD2HEgGX4=");
     background-repeat: no-repeat;
-    background-size: cover; display: flex; max-height: 12%; overflow:visible;  white-space: nowrap;
+    background-size: cover; display: flex; max-height: 12%; overflow:visible;  white-space: nowrap; min-height: 120px; 
 }
 
 #logo{float: left; width: 10%; height: 97%; color: aliceblue; padding-top: 3%; max-height: 100%; 
@@ -23,16 +23,16 @@ body{margin:0;padding:0;border:none; background-color: #20212b;
 }
 
 #title{float: left; width: 40%; height: 98%; font-size: 28px;  max-height: 100%; 
-    padding-top: 2%; text-align: left; color:#190019;  display: flex; 
+    padding-top: 2%; text-align: left; color:#190019;  display: flex;  min-height: 500px; 
 }
 
 #navBar{float: left; clear: both; font-family: Monospace ;
      text-decoration:none; height: 8%; width: 100%; overflow:visible; 
-      white-space: nowrap;
+      white-space: nowrap; overflow-y:hidden;
 } 
 
 #navBar table{text-align:center; width:30% ;font-size:18px ;
-    text-align:center;font-weight:bold; float: right;  white-space: nowrap; clip:auto 
+    text-align:center;font-weight:bold; float: right; overflow-y: hidden; min-width: 500px;
 }
 
 #navBar td { padding:1.45%; width:33.333%;
